@@ -19,6 +19,9 @@ Untuk menyusun struktur dokumen, gunakan \verb|\chapter{}| untuk bab, \verb|\sec
 
 Untuk menulis cetak tebal dan miring, gunakan \verb|\textbf{}| dan \verb|\textit{}|. Untuk penulisan kode, gunakan \verb/\verb||/. Untuk perintah \texttt{verb}, argumen wajib tidak harus menggunakan kurung kurawal, bisa menggunakan simbol lain selama simbol tersebut tidak termasuk didalam argumennya. Untuk mencantumkan URL, gunakan \verb|\url{}|.
 
+
+
+
 \begin{table}[H]
     \centering
     \begin{tabular}{l  l}
@@ -129,9 +132,9 @@ Untuk mencantumkan gambar, beberapa hal yang perlu diperhatikan adalah sebagai b
     \end{tabular}
 \end{table}
 
-Dalam menyusun tabel, jumlah dan \textit{alignment} kolom harus ditentukan terlebih dulu dengan memberikan argumen kedalam perintah \verb|\tabular| dan \verb|\longtable|. Dalam contoh yang diberikan, argumen yang diberikan adalah \verb|{rrr}|. Argumen tersebut berarti 3 kolom yang setiap kolomnya menggunakan rata kanan. Untuk rata tengah, gunakan \texttt{c} dan untuk rata kiri, gunakan \texttt{l}. Jadi, misalkan mau menyusun tabel dengan 5 kolom dengan rata kiri kecuali kolom pertama menggunakan rata tengah, argumen yang digunakan adalah \verb|{cllll}|. Lebar kolom akan diatur otomatis oleh program. 
+Dalam menyusun tabel, jumlah dan \textit{alignment} kolom harus ditentukan terlebih dulu dengan memberikan argumen kedalam perintah \verb|\tabular| dan \verb|\longtable|. Dalam contoh yang diberikan, argumen yang diberikan adalah \verb|{rrr}|. Argumen tersebut berarti 3 kolom yang setiap kolomnya menggunakan rata kanan. Untuk rata tengah, gunakan \texttt{c} dan untuk rata kiri, gunakan \texttt{l}. Jadi, misalkan mau menyusun tabel dengan 5 kolom dengan rata kiri kecuali kolom pertama menggunakan rata tengah, argumen yang digunakan adalah \verb|{cllll}|. Untuk contoh tabel diatas yang digunakan adalah \verb|{rrrrrrrrr}|. Lebar kolom akan diatur otomatis oleh program. 
 
-Setiap baris tabel diakhiri dengan \verb|\\| dan setiap sel dipisah. menggunakan \&. Jadi misalkan satu baris yang terdiri dari 3 kolom dengan nilai 1, 2, dan 3, penulisannya adalah \verb|1 & 2 & 3 \\|.\textit{Boilerplate} kode untuk mencantumkan tabel menggunakan \texttt{tabular} adalah sebagai berikut:
+Setiap baris tabel diakhiri dengan \verb|\\| dan setiap sel dipisah menggunakan simbol \&. Jadi misalkan satu baris yang terdiri dari 3 kolom dengan nilai 1, 2, dan 3, penulisannya adalah \verb|1 & 2 & 3 \\|. \textit{Boilerplate} kode untuk mencantumkan tabel menggunakan \texttt{tabular} adalah sebagai berikut:
 
 \begin{verbatim}
     \begin{table}[H]
