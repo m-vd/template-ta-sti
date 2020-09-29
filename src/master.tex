@@ -1,0 +1,100 @@
+\documentclass[12pt, a4paper, onecolumn, oneside, final]{report}
+
+\input{config/if-itb-thesis.sty}
+
+\makeatletter
+
+\makeatother
+
+\bibliography{references}
+
+\newcommand{\nim}{18270001}
+\newcommand{\yearsidang}{1970}
+\newcommand{\namapembimbing}{Apple Seed}
+\newcommand{\nippembimbing}{19400101 196801 1 001}
+
+\begin{document}
+
+    \title{Template Tugas Akhir Prodi STI dalam Bahasa Indonesia menggunakan \LaTeX}
+    \date{1 Januari}
+    \author{John Doe}
+
+    \pagenumbering{roman}
+    \setcounter{page}{0}
+    
+    \input{komponen-awal/cover}
+    \input{komponen-awal/pengesahan}
+    \input{komponen-awal/pernyataan-orisinalitas}
+
+    \pagestyle{plain}
+
+    \input{komponen-awal/abstrak-id}
+    \input{komponen-awal/abstrak-en}
+    \input{komponen-awal/prakata}
+
+    \titleformat*{\section}{\centering\bfseries\Large\MakeUpperCase}
+	
+	\clearpage
+    \tableofcontents
+    
+    \clearpage
+    {%
+		\let\oldnumberline\numberline%
+		\renewcommand{\numberline}{\figurename~\oldnumberline}%
+		\listoffigures%
+	}
+	
+	\clearpage
+    {%
+		\let\oldnumberline\numberline%
+		\renewcommand{\numberline}{\tablename~\oldnumberline}%
+		\listoftables%
+	}
+	
+    \newpage
+    \setcounter{savepage}{\arabic{page}}
+
+    \titleformat*{\section}{\bfseries\Large}
+    
+    % Konfigurasi Bab
+    \renewcommand{\chaptername}{BAB}
+    \renewcommand{\thechapter}{\Roman{chapter}}
+    \pagenumbering{bychapter}
+    \setlength{\parindent}{1cm}
+
+    %----------------------------------------------------------------%
+    % Daftar Bab
+    %----------------------------------------------------------------%
+    \input{komponen-utama/bab-1}
+    \input{komponen-utama/bab-2}
+    \input{komponen-utama/bab-3}
+    \input{komponen-utama/bab-4}
+    \input{komponen-utama/bab-5}
+    
+    %----------------------------------------------------------------%
+
+    % Konfigurasi Daftar Pustaka
+    \begin{flushleft}
+    	\clearpage
+    	\pagenumbering{roman}
+    	\setcounter{page}{\thesavepage}
+    	\addcontentsline{toc}{chapter}{Daftar Pustaka}
+    	\printbibliography[title=Daftar Pustaka]
+    \end{flushleft}
+    
+    % Konfigurasi Lampiran
+    \clearpage
+    \appendix
+    \addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{Lampiran }}
+    \addtocontents{toc}{\protect\renewcommand{\protect\cftchapnumwidth}{6em}}
+    \renewcommand{\chaptername}{Lampiran}
+    \pagenumbering{bychapter}
+    
+    %----------------------------------------------------------------%
+    % Daftar Lampiran
+    %----------------------------------------------------------------%
+    \input{komponen-akhir/lampiran-1}
+    
+    %----------------------------------------------------------------%
+    
+\end{document}

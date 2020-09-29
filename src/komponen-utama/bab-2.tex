@@ -1,0 +1,203 @@
+\chapter{Tinjauan Pustaka}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at justo condimentum quam fringilla egestas sed non dui. In at feugiat leo. Quisque maximus feugiat condimentum. Nunc molestie egestas ante vitae accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut convallis at massa sed sagittis. Curabitur venenatis eleifend ipsum, sed sodales nibh mollis ut.
+
+
+\section{Dasar \LaTeX}
+
+Struktur dasar perintah Latex adalah \verb|\commandname[]{}|. Suatu perintah dalam Latex menerima dua macam argumen, yaitu \textit{mandatory arguments} dan \textit{optional arguments}. Argumen wajib ditulis didalam kurung kurawal sementara argumen tambahan dalam kurung kotak. 
+
+Untuk menyusun struktur dokumen, gunakan \verb|\chapter{}| untuk bab, \verb|\section{}| untuk sub bab, \verb|\subsection{}| untuk anak sub bab, \verb|\subsubsection{}| untuk level selanjutnya, dan seterusnya. Argumen yang dimasukan cukup nama bab atau sub bab tersebut saja. Penomoran akan dilakukan otomatis oleh program (termasuk juga penomoran untuk gambar dan tabel, jadi tidak perlu mengurus daftar isi, tabel, dan gambar). Sebagai contoh, struktur penulisan bab ini adalah: 
+
+\begin{verbatim}
+    \chapter{Tinjauan Pustaka}
+        \section{Dasar \LaTeX}
+            Bla bla bla bla bla
+        \section{List}
+            Bla bla bla bla bla
+\end{verbatim}
+
+Untuk menulis cetak tebal dan miring, gunakan \verb|\textbf{}| dan \verb|\textit{}|. Untuk penulisan kode, gunakan \verb/\verb||/. Untuk perintah \texttt{verb}, argumen wajib tidak harus menggunakan kurung kurawal, bisa menggunakan simbol lain selama simbol tersebut tidak termasuk didalam argumennya. Untuk mencantumkan URL, gunakan \verb|\url{}|.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l  l}
+        Hasil & Kode LaTeX \\
+        \midrule
+        \textbf{Lorem ipsum} dolor sit amet & \verb|\textbf{Lorem ipsum}| dolor sit amet \\
+        \textit{Lorem ipsum} dolor sit amet & \verb|\textit{Lorem ipsum}| dolor sit amet \\
+        \verb|Lorem ipsum| dolor sit amet & \verb[\verb|Lorem ipsum|[ dolor sit amet \\
+    \end{tabular}
+\end{table}
+
+\section{List}
+
+Ada dua macam \textit{list} yang bisa dibuat, \textit{ordered} dan \textit{unordered} (seperti di HTML atau \textit{bullets and numbering} di Microsoft Word dan Google Docs). Untuk \textit{unordered lists} kodenya adalah: 
+
+\begin{verbatim}
+    \begin{itemize}
+        \item Nulla tristique eros ut dolor lobortis viverra.
+        \item Sed euismod erat ut leo molestie, 
+              sed malesuada libero ultrices.
+    \end{itemize}
+\end{verbatim}
+
+Sementara untuk \textit{ordered lists}: 
+
+\begin{verbatim}
+    \begin{enumerate}
+        \item Nulla tristique eros ut dolor lobortis viverra.
+        \item Sed euismod erat ut leo molestie, 
+              sed malesuada libero ultrices.
+    \end{enumerate}
+\end{verbatim}
+
+
+\section{Bibliography atau Daftar Pustaka}
+
+Rujukan ditulis dengan menggunakan perintah \verb|\textcite{}| atau  \verb|\autocite{}|. Perintah pertama digunakan bila mau mengacu ke nama penulis pada awal kalimat, sementara perintah kedua dapat digunakan bila ditulis pada akhir kalimat, misalkan: 
+
+\begin{displayquote}
+    "\textcite{penulisanilteks} mengatakan bahwa tata karya tulis ilmiah merupakan cara menyusun tulisan tentang perencanaan, pelaksanaan, dan hasil suatu kajian ilmiah"
+    
+    "Tata karya tulis ilmiah merupakan cara menyusun tulisan tentang perencanaan, pelaksanaan, dan hasil suatu kajian ilmiah \autocite{penulisanilteks}."
+\end{displayquote}
+
+Argumen yang diberikan bergantung pada entri didalam file \texttt{.bib} yang digunakan. Terdapat beberapa macam entri, misalnya \verb|@book| atau \verb|@article|. Bila mencari sumber dari \textit{Google Scholar}, entri dapat langsung didapatkan dengan menekan tombol kutip, kemudian menekan tombol "BibTeX". Contoh entri dalam \texttt{.bib} adalah sebagai berikut:
+
+\begin{verbatim}
+    @book{penulisanilteks,
+      author    = {{Tim Dosen Tata Tulis Karya Ilmiah ITB}}, 
+      title     = {Metode Penulisan Ilteks},
+      year      = 2017,
+    }
+\end{verbatim}
+
+\section{Gambar}
+
+\textit{Gambar \ref{gambar:logo_itb} merupakan logo Institut Teknologi Bandung. Terdapat beberapa jenis variasi logo yang dapat digunakan, tergantung tujuan penggunaan logo. Contoh variasi lain logo ITB dapat diunduh pada halaman \url{https://ditsti.itb.ac.id/download-logo-itb/}.}
+
+\begin{figure}[h]
+    \centering
+  	\includegraphics[width=0.38\textwidth]{aset/logo-itb.jpg}
+  	\caption{Logo ITB}
+  	\label{gambar:logo_itb}
+\end{figure}
+
+\textit{Boilerplate} kode untuk mencantumkan gambar adalah sebagai berikut:
+
+\begin{verbatim}
+    \begin{figure}[h]
+        \centering
+      	\includegraphics[]{}
+      	\caption{}
+      	\label{}
+    \end{figure}
+\end{verbatim}
+
+Untuk mencantumkan gambar, beberapa hal yang perlu diperhatikan adalah sebagai berikut:
+
+\begin{enumerate}
+    \item Gambar harus diberikan nama. Nama gambar ditambahkan dengan menggunakan perintah \verb|\caption{}|. Nama gambar dicantumkan dibawah gambar.
+    \item Gambar harus dirujuk dalam paragraf pembahasan. Untuk merujuk kepada gambar, gunakan perintah \verb|ref{}|. 
+    \item Ketika mencantumkan gambar yang dibuat oleh orang lain, termasuk misalnya mengambil gambar dari internet, harus dituliskan sumber kutipan. Hal ini untuk menghindari tindakan penjiplakan. 
+\end{enumerate}
+
+\section{Tabel}
+
+\textit{Tabel \ref{tabel:sampel_dataset} merupakan tabel nilai mahasiswa dari prodi Sistem dan Teknologi Informasi pada beberapa mata kuliah semester ketiga dan sebelumnya. Setiap kolom merepresentasikan suatu mata kuliah dan setiap baris merupakan seorang mahasiswa. Nilai NaN berarti data tidak tersedia.}
+
+\begin{table}[H]
+    \centering
+    \caption{Sampel dataset}
+    \label{tabel:sampel_dataset}
+    \begin{tabular}{rrrrrrrrr}
+     \toprule
+     EL2142 & IF1210 & II2110 & KI1202 & KU1072 & II2111 & II2110 & ... & TI3005\\
+     \midrule
+     4.0 & 3.0 & 4.0 & 4.0 & 4.0 & 4.0 & 4.0 & ... & NaN \\
+     0.0 & 1.0 & NaN & 0.0 & 3.0 & NaN & NaN & ... & NaN \\
+     4.0 & 3.5 & 3.0 & 4.0 & 3.0 & 3.0 & 3.0 & ... & 4.0 \\
+     3.0 & 3.0 & 4.0 & 3.0 & NaN & 4.0 & 4.0 & ... & 3.0 \\
+     3.0 & 2.5 & 4.0 & 3.0 & 3.0 & 4.0 & 4.0 & ... & 3.0 \\
+     0.0 & 0.0 & 2.0 & 0.0 & 3.0 & 2.0 & 2.0 & ... & 3.0 \\
+     NaN & 2.0 & 4.0 & 2.0 & 3.0 & 4.0 & 4.0 & ... & NaN \\
+     4.0 & 3.5 & 3.5 & 3.0 & 4.0 & 3.5 & 3.5 & ... & 3.0 \\
+     NaN & 2.0 & 4.0 & 3.5 & 2.5 & 4.0 & 4.0 & ... & 3.0 \\
+     1.0 & 2.0 & 3.5 & 2.0 & 3.0 & 3.5 & 3.5 & ... & NaN \\
+     \bottomrule
+    \end{tabular}
+\end{table}
+
+Dalam menyusun tabel, jumlah dan \textit{alignment} kolom harus ditentukan terlebih dulu dengan memberikan argumen kedalam perintah \verb|\tabular| dan \verb|\longtable|. Dalam contoh yang diberikan, argumen yang diberikan adalah \verb|{rrr}|. Argumen tersebut berarti 3 kolom yang setiap kolomnya menggunakan rata kanan. Untuk rata tengah, gunakan \texttt{c} dan untuk rata kiri, gunakan \texttt{l}. Jadi, misalkan mau menyusun tabel dengan 5 kolom dengan rata kiri kecuali kolom pertama menggunakan rata tengah, argumen yang digunakan adalah \verb|{cllll}|. Lebar kolom akan diatur otomatis oleh program. 
+
+Setiap baris tabel diakhiri dengan \verb|\\| dan setiap sel dipisah. menggunakan \&. Jadi misalkan satu baris yang terdiri dari 3 kolom dengan nilai 1, 2, dan 3, penulisannya adalah \verb|1 & 2 & 3 \\|.\textit{Boilerplate} kode untuk mencantumkan tabel menggunakan \texttt{tabular} adalah sebagai berikut:
+
+\begin{verbatim}
+    \begin{table}[H]
+        \centering
+        \caption{}
+        \label{}
+        
+        \begin{tabular}{rrr}
+         \toprule
+         Judul Kolom 1 & Judul Kolom 2 & Judul Kolom 3 \\
+         \midrule
+         a & b & c \\
+         d & e & f \\
+         g & h & i \\
+         \bottomrule
+        \end{tabular}
+
+    \end{table}
+\end{verbatim}
+
+Berbeda dengan \texttt{tabular}, \texttt{longtable} memiliki perintah tambahan seperti \verb|\endhead| dan \verb|\endfirsthead|. Gunakan \verb|\endfirsthead| untuk mendeklarasikan batas kepala tabel yang pertama kali muncul, sehingga caption dan tabel hanya perlu dideklarasikan disini. \textit{Boilerplate} kode untuk mencantumkan tabel menggunakan \texttt{longtable} adalah sebagai berikut:
+
+\begin{verbatim}
+    \begin{longtable}{rrr}
+        \caption{}
+        \label{}\\
+        \toprule
+        Judul Kolom 1 & Judul Kolom 2 & Judul Kolom 3 \\
+        \midrule
+        \endfirsthead
+    
+        \toprule
+        Judul Kolom 1 & Judul Kolom 2 & Judul Kolom 3 \\
+        \midrule
+        \endhead
+        
+        a & b & c \\
+        d & e & f \\
+        g & h & i \\
+        \bottomrule
+    \end{longtable}
+\end{verbatim}
+
+Untuk mencantumkan tabel, beberapa hal yang perlu diperhatikan adalah sebagai berikut:
+
+\begin{enumerate}
+    \item Berikan nama dan label untuk tabel. Cara menuliskan nama untuk tabel sama seperti gambar, namun nama tabel dicantumkan diatas tabel. 
+    \item Ada 2 \textit{package} yang dapat digunakan, yaitu \texttt{tabular} dan \texttt{longtable}. Untuk tabel yang tidak melebihi satu halaman, cukup gunakan \texttt{tabular} saja.
+    \item Untuk \texttt{longtable}, setelah menuliskan label, harus diakhiri dengan \verb|\\|.
+\end{enumerate}
+
+\section{Persamaan atau Rumus}
+
+\textit{Salah satu persamaan untuk menghitung jarak yang umum digunakan adalah euclidean distance (persamaan \ref{persamaan:euclidean_distance}).}
+
+\begin{equation}
+    \label{persamaan:euclidean_distance}
+    d_{(x,y)} = \sqrt{\sum_{i=1}^{k} (x_i - y_i)^2}
+\end{equation}
+
+Persamaan dapat ditulis \textit{inline} ataupun dalam paragraf sendiri seperti persamaan \textit{euclidean distance} diatas. Untuk menulis persamaan \textit{inline}, gunakan simbol \$ sebagai kurung, misalkan \verb|$x = 3$| untuk menulis $x = 3$. Untuk persamaan dalam paragraf tersendiri, kodenya adalah sebagai berikut:
+
+\begin{verbatim}
+    \begin{equation}
+        \label{}
+        % Tulis persamaan disini 
+    \end{equation}
+\end{verbatim}
+

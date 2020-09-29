@@ -18,3 +18,4 @@ thesis.pdf
 .directory
 output/*
 build/*
+.DS_Store

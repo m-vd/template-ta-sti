@@ -1,54 +1,59 @@
-Templat LaTeX Tesis Informatika ITB
-===================================
-oleh: Petra Novandi <me@petrabarus.net>
+# Template LaTeX Tugas Akhir Prodi STI ITB
 
-Dokumen ini merupakan templat LaTeX yang ditujukan untuk laporan
-tesis di program studi Teknik Informatika ITB. Templat ini penulis
-gunakan dalam penulisan laporan tesis penulis dan dengan semangat
-berbagi penulis memutuskan untuk mempublikasikan templat ini agar
-dapat digunakan oleh banyak orang.
+## Penjelasan Singkat
 
-Silakan mengunduh, menggunakan, memodifikasi, dan menyebarkan
-templat ini. :)
+Template ini merupakan template laporan tugas akhir prodi STI ITB dalam LaTeX. Didalam template ini juga terdapat penjelasan dasar mengenai cara menggunakan LaTeX dan tata tulis karya ilmiah dalam Bahasa Indonesia. 
 
 
-Kebutuhan
----------
+1. Struktur dokumen (pendahuluan, studi literatur, metodologi, hasil, penutup) menyesuaikan dengan struktur umum laporan tugas akhir. Bila ternyata kurang cocok, silakan ubah struktur tersebut agar sesuai dengan kebutuhan kalian. 
+2. Penjelasan mengenai cara menggunakan LaTeX dibahas pada bab 2.
+3. Penjelasan mengenai TTKI dan beberapa tips untuk isi laporan dibahas pada bab 3.
+4. Penjelasan yang ditulis disini terbatas ke dasar saja, untuk lebih lengkapnya silahkan mencari sendiri lagi ya di internet atau referensi lainnya ;)
+5. Sejauh ini, template baru diuji dan ditujukan untuk digunakan pada [Overleaf](https://overleaf.com).
 
-Program telah diuji dalam sistem operasi Linux Ubuntu 14.04. Untuk melakukan instalasi
-perangkat lunak yang dibutuhkan, eksekusi perintah berikut.
+## Konfigurasi Awal dan Struktur Template
+
+Buka file `master.tex` baris ke 11 dan ubah konfigurasi ini:
 
 ```
-sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends \
-    texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra \
-    dvipng texlive-latex-recommended \
-    texlive-bibtex-extra biber xzdec
+    \newcommand{\nim}{ *Isi NIM kalian disini* }
+    \newcommand{\yearsidang}{ *Isi tahun sidang kalian disini* }
+    \newcommand{\namapembimbing}{ *Isi nama pembimbing kalian disini* }
+    \newcommand{\nippembimbing}{ *Isi NIP pembimbing kalian disini* }
+    
+    \begin{document}
+    
+        \title{ *Isi Judul TA kalian disini* }
+        \date{ *Isi tanggal dan bulan sidang kalian disini* }
+        \author{ *Isi nama kalian disini* }
+``` 
+
+Struktur template yang digunakan adalah seperti ini:
+```
+-- /(document root)
+ |--- aset/              % simpan gambar atau aset lain disini  
+ |--- config/            % konfigurasi, harusnya ga perlu diutak-atik kecuali ada kebutuhan khusus
+ |--- komponen-akhir/    % lampiran
+ |--- komponen-awal/     % cover, pengesahan, pernyataan, abstrak, prakata
+   |--- cover.tex
+   |--- pengesahan.tex
+   |--- pernyataan.tex
+   |--- abstrak-id.tex
+   |--- abstrak-en.tex
+   |--- prakata.tex
+ |--- komponen-utama/    % bab 1-5
+   |--- bab-1.tex
+   |--- bab-2.tex
+   |--- bab-3.tex
+   |--- bab-4.tex
+   |--- bab-5.tex
+ |--- master.tex         % source code utama
+ |--- references.bib     % database referensi yang diacu    
+
 ```
 
-Penggunaan
-----------
 
-Templat ini telah dilengkapi oleh skrip untuk melakukan kompilasi
-Makefile. Untuk melakukan kompilasi cukup eksekusi perintah berikut
+## Acknowledgement
 
-```
-make
-```
-
-Hasil kompilasi akan berada pada berkas `output/tesis.pdf`.
-
-Kontribusi
-----------
-
-Templat ini dapat digunakan secara gratis, akan tetapi penulis sangat
-berharap adanya kritik serta saran dari pengguna untuk meningkatkan
-kualitas hasil dan penggunaan templat ini.
-
-Kritik dan saran tersebut dapat dikirim melalui URL
-<https://github.com/petrabarus/if-itb-latex/issues>.
-
-Terima Kasih
------------
-
-* Steven Lolong atas pemberian templat LaTeX yang asli.
-* Peb Ruswono Aryan atas bantuan pelengkapan struktur dokumen.
+1. Template ini merupakan modifikasi dari template yang disusun oleh [Petra Barus](https://github.com/petrabarus/if-itb-latex) untuk prodi IF ITB.
+2. Beberapa tata tulis yang dicantumkan berasal dari buku "Metode Penulisan Ilteks" oleh Tim Dosen TTKI ITB.

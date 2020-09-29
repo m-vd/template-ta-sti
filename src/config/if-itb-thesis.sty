@@ -18,27 +18,66 @@
 
 \usepackage{mathptmx}
 
-% Judul bahasa Indonesia
-\usepackage[bahasa]{babel}
+% Pengaturan bahasa
+\usepackage[english]{babel}
+\usepackage[figurename=Gambar ]{caption}
+\usepackage[tablename=Tabel ]{caption}
+
+\addto{\captionsenglish}{ %
+    \renewcommand{\contentsname}{Daftar Isi}
+    \renewcommand{\listfigurename}{Daftar Gambar}
+    \renewcommand{\listtablename}{Daftar Tabel}
+    \renewcommand{\appendixname}{Lampiran}
+}
 
 % Format citation
-\usepackage[backend=bibtex,citestyle=authoryear]{biblatex}
+\usepackage[
+    style=ieee,
+]{biblatex}
+
 
 \usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{makecell}
 \usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{tabto}
+\usepackage{comment}
+\usepackage{amsmath}
+\usepackage[labelfont=bf]{caption}	% Package dengan opsi untuk mempertebal label caption
+\usepackage{enumitem}				
+\usepackage{tocbibind}				% Package untuk memasukkan Daftar Pustaka ke dalam Daftar Isi
+\usepackage{tocloft}				% Package untuk mengatur Daftar Isi, Daftar Gambar dan Daftar Tabel
+\usepackage{float}					% Package untuk membantu penetapan lokasi gambar
+\usepackage{indentfirst}			% Package untuk indentasi pada paragraf pertama
+\usepackage[auto]{chappg}			% Package untuk penomoran halaman Bab-Halaman
 \usepackage{titling}
 \usepackage{blindtext}
 \usepackage{sectsty}
 \usepackage{chngcntr}
 \usepackage{etoolbox}
-\usepackage{hyperref}       % Package untuk link di daftar isi.
-\usepackage{titlesec}       % Package Format judul
+\usepackage{hyperref}       		% Package untuk link di daftar isi.
+\usepackage{titlesec}       		% Package Format judul
 \usepackage{parskip}
+\usepackage[htt]{hyphenat}
+\usepackage{csquotes}
+
+% Tambahan (custom)
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amssymb}
 
 % Line satu setengah spasi
 \renewcommand{\baselinestretch}{1.5}
 
+% Pengaturan tambahan untuk tabel
+\renewcommand{\arraystretch}{1.1}
+\setlength\heavyrulewidth{0.225ex}
+
 % Setting judul
+\titlespacing*{\chapter}{0pt}{-50pt}{10pt}
 \chapterfont{\centering \Large}
 \titleformat{\chapter}[display]
   {\Large\centering\bfseries}
@@ -47,11 +86,93 @@
 
 % Setting nomor pada subbsubsubbab
 \setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{4}
 
 \makeatletter
-
+\setlength{\@fptop}{0pt}
+\setlength{\@fpbot}{0pt plus 1fil}
 \makeatother
 
 % Counter untuk figure dan table.
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+
+% Counter untuk penomoran halaman lanjut
+\newcounter{savepage}
+
+% Pengaturan caption
+\captionsetup{labelsep=space}
+
+% Pengaturan spasi untuk justify
+\pretolerance=10000
+\tolerance=2000 
+\emergencystretch=10pt
+%\tolerance=1
+%\emergencystretch=10pt
+%\hyphenpenalty=10000
+%\exhyphenpenalty=10000
+
+% Pengaturan untuk Daftar Rumus
+\newcommand{\listequationsname}{Daftar Rumus}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
+\setlength{\cftmyequationsnumwidth}{2.5em}
+
+\newcommand{\listalgorithmname}{Daftar Algoritme}
+\newlistof{algorithm}{alg}{\listalgorithmname}
+\newcommand{\algorithm}[1]{%
+\refstepcounter{algorithm}
+\par\noindent\centering\normalsize\textbf{Algoritme {\thechapter.\thealgorithm\ }\normalfont #1}
+\addcontentsline{alg}{algorithm}{\protect\numberline{\thechapter.\thealgorithm}#1}\par}
+\setlength{\cftalgorithmnumwidth}{2.5em}
+
+% Pengaturan untuk title Daftar Isi, Tabel, dan Gambar
+\renewcommand{\cfttoctitlefont}{\hspace*{\fill}\Large\bfseries\MakeUppercase}
+\renewcommand{\cftaftertoctitle}{\hspace*{\fill}}
+\renewcommand{\cftlottitlefont}{\hspace*{\fill}\Large\bfseries\MakeUppercase}
+\renewcommand{\cftafterlottitle}{\hspace*{\fill}}
+\renewcommand{\cftloftitlefont}{\hspace*{\fill}\Large\bfseries\MakeUppercase}
+\renewcommand{\cftafterloftitle}{\hspace*{\fill}} 
+\renewcommand{\cftequtitlefont}{\hspace*{\fill}\Large\bfseries\MakeUppercase}
+\renewcommand{\cftafterequtitle}{\hspace*{\fill}} 
+\renewcommand{\cftalgtitlefont}{\hspace*{\fill}\Large\bfseries\MakeUppercase}
+\renewcommand{\cftafteralgtitle}{\hspace*{\fill}} 
+
+\renewcommand{\cftchappresnum}{Bab }
+\renewcommand{\cftchapaftersnum}{}
+\renewcommand{\cftchapnumwidth}{3.7em}
+
+\setlength{\cftbeforetoctitleskip}{-4em}
+\setlength{\cftbeforeloftitleskip}{-4em}
+\setlength{\cftbeforelottitleskip}{-4em}
+\setlength{\cftbeforeequtitleskip}{-4em}
+\setlength{\cftbeforealgtitleskip}{-4em}
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\lstset{frame=single,
+  columns=fullflexible,
+  basicstyle={\small\ttfamily},
+  breaklines=true,
+  breakatwhitespace=false,
+  postbreak=\mbox{$\hookrightarrow$\space},
+  tabsize=3
+}
+
+\renewcommand{\lstlistingname}{Algoritme}
+\renewcommand{\lstlistlistingname}{Daftar \lstlistingname}
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+\cftsetpnumwidth{2em}
+
+
+\DefineBibliographyStrings{english}{
+    urlseen = {Waktu akses},
+    url = {URL:},
+    and = {dan},
+    pages = {halaman},
+    andothers = {dkk\adddot},
+    in = {dalam}
+}
