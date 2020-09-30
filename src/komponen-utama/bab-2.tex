@@ -64,7 +64,7 @@ Rujukan ditulis dengan menggunakan perintah \verb|\textcite{}| atau  \verb|\auto
     "Tata karya tulis ilmiah merupakan cara menyusun tulisan tentang perencanaan, pelaksanaan, dan hasil suatu kajian ilmiah \autocite{penulisanilteks}."
 \end{displayquote}
 
-Argumen yang diberikan bergantung pada entri didalam file \texttt{.bib} yang digunakan. Terdapat beberapa macam entri, misalnya \verb|@book| atau \verb|@article|. Bila mencari sumber dari \textit{Google Scholar}, entri dapat langsung didapatkan dengan menekan tombol kutip, kemudian menekan tombol "BibTeX". 
+Argumen yang diberikan bergantung pada entri didalam file \texttt{.bib} yang digunakan. Terdapat beberapa macam entri, misalnya \verb|@book| atau \verb|@article|. Bila mencari sumber dari \textit{Google Scholar}, entri dapat langsung didapatkan dengan menekan tombol kutip, kemudian menekan tombol "BibTeX". Isi didalam file \texttt{.bib} tidak perlu diurutkan, daftar pustaka akan otomatis diurutkan oleh program. 
 
 \begin{lstlisting}[caption={Contoh entri dalam BibTeX}]
     @book{penulisanilteks,
@@ -78,14 +78,14 @@ Argumen yang diberikan bergantung pada entri didalam file \texttt{.bib} yang dig
 
 \textit{Gambar \ref{gambar:logo_itb} merupakan logo Institut Teknologi Bandung. Terdapat beberapa jenis variasi logo yang dapat digunakan, tergantung tujuan penggunaan logo. Contoh variasi lain logo ITB dapat diunduh pada halaman \url{https://ditsti.itb.ac.id/download-logo-itb/}.}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
   	\includegraphics[width=0.38\textwidth]{aset/logo-itb.jpg}
   	\caption{Logo ITB}
   	\label{gambar:logo_itb}
 \end{figure}
 
-\begin{lstlisting}[caption={Kode Latex untuk mencantumkan gambar}]
+\begin{lstlisting}[caption={Kode Latex untuk mencantumkan gambar}, float]
     \begin{figure}[h]
         \centering
       	\includegraphics[]{}
