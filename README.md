@@ -18,8 +18,9 @@ Template ini merupakan template laporan tugas akhir prodi STI ITB dalam LaTeX. D
 1. Unduh repositori ini sebagai .zip.
 2. Buka [Overleaf](https://overleaf.com)
 3. Pilih New Project, kemudian Upload Project.
-4. Unggah file .zip yang telah diunduh tadi
-5. Buka file `master.tex` baris ke 11 dan ubah konfigurasi ini:
+4. Unggah file .zip yang telah diunduh tadi.
+5. Pastikan main document-nya udah di-set ke `master.tex`
+6. Buka file `master.tex` baris ke 11 dan ubah bagian ini:
 
 ```
     \newcommand{\nim}{ *Isi NIM kalian disini* }

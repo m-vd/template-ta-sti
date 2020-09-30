@@ -2,7 +2,7 @@
 %
 % Konfigurasi dokumen LaTeX untuk laporan tesis IF ITB
 %
-% @author Petra Novandi
+% @author Petra Barus
 %
 %-------------------------------------------------------------------%
 %
@@ -22,7 +22,6 @@
 \usepackage[english]{babel}
 \usepackage[figurename=Gambar ]{caption}
 \usepackage[tablename=Tabel ]{caption}
-
 \addto{\captionsenglish}{ %
     \renewcommand{\contentsname}{Daftar Isi}
     \renewcommand{\listfigurename}{Daftar Gambar}
@@ -35,12 +34,10 @@
     style=ieee,
 ]{biblatex}
 
-
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
 \usepackage{makecell}
 \usepackage{graphicx}
-\usepackage{tabularx}
 \usepackage{listings}
 \usepackage{tabto}
 \usepackage{comment}
@@ -63,10 +60,13 @@
 \usepackage[htt]{hyphenat}
 \usepackage{csquotes}
 
-% Tambahan (custom)
+% Package untuk tabel
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{tabularx}
+
+% Package untuk tambahan simbol matematika
 \usepackage{amssymb}
 
 % Line satu setengah spasi
@@ -119,13 +119,11 @@
 \addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
 \setlength{\cftmyequationsnumwidth}{2.5em}
 
-\newcommand{\listalgorithmname}{Daftar Algoritme}
-\newlistof{algorithm}{alg}{\listalgorithmname}
-\newcommand{\algorithm}[1]{%
-\refstepcounter{algorithm}
-\par\noindent\centering\normalsize\textbf{Algoritme {\thechapter.\thealgorithm\ }\normalfont #1}
-\addcontentsline{alg}{algorithm}{\protect\numberline{\thechapter.\thealgorithm}#1}\par}
-\setlength{\cftalgorithmnumwidth}{2.5em}
+\renewcommand*{\theequation}{\thechapter.\arabic{equation}}
+
+\renewcommand{\lstlistingname}{Algoritme}
+\renewcommand{\lstlistlistingname}{Daftar \lstlistingname}
+
 
 % Pengaturan untuk title Daftar Isi, Tabel, dan Gambar
 \renewcommand{\cfttoctitlefont}{\hspace*{\fill}\Large\bfseries\MakeUppercase}
@@ -136,8 +134,6 @@
 \renewcommand{\cftafterloftitle}{\hspace*{\fill}} 
 \renewcommand{\cftequtitlefont}{\hspace*{\fill}\Large\bfseries\MakeUppercase}
 \renewcommand{\cftafterequtitle}{\hspace*{\fill}} 
-\renewcommand{\cftalgtitlefont}{\hspace*{\fill}\Large\bfseries\MakeUppercase}
-\renewcommand{\cftafteralgtitle}{\hspace*{\fill}} 
 
 \renewcommand{\cftchappresnum}{Bab }
 \renewcommand{\cftchapaftersnum}{}
@@ -147,26 +143,21 @@
 \setlength{\cftbeforeloftitleskip}{-4em}
 \setlength{\cftbeforelottitleskip}{-4em}
 \setlength{\cftbeforeequtitleskip}{-4em}
-\setlength{\cftbeforealgtitleskip}{-4em}
 
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
-\lstset{frame=single,
+\lstset{frame=Tb,
   columns=fullflexible,
   basicstyle={\small\ttfamily},
   breaklines=true,
   breakatwhitespace=false,
   postbreak=\mbox{$\hookrightarrow$\space},
-  tabsize=3
+  tabsize=4
 }
-
-\renewcommand{\lstlistingname}{Algoritme}
-\renewcommand{\lstlistlistingname}{Daftar \lstlistingname}
 
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 
 \cftsetpnumwidth{2em}
-
 
 \DefineBibliographyStrings{english}{
     urlseen = {Waktu akses},
@@ -174,5 +165,7 @@
     and = {dan},
     pages = {halaman},
     andothers = {dkk\adddot},
+    techreport = {Dok. teknis},
+    phdthesis = {Disertasi doktoral\adddot},
     in = {dalam}
 }

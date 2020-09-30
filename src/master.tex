@@ -10,8 +10,11 @@
 
 \newcommand{\nim}{18270001}
 \newcommand{\yearsidang}{1970}
-\newcommand{\namapembimbing}{Apple Seed}
+\newcommand{\namapembimbing}{Dr. Apple Seed}
 \newcommand{\nippembimbing}{19400101 196801 1 001}
+% Kalau ada pembimbing kedua, isi ini
+\newcommand{\namapembimbingkedua}{Orange Seed, B.Eng, M.Eng}
+\newcommand{\nippembimbingkedua}{19400101 196101 2 004}
 
 \begin{document}
 
@@ -23,7 +26,11 @@
     \setcounter{page}{0}
     
     \input{komponen-awal/cover}
+    
+    % comment out yang tidak digunakan
     \input{komponen-awal/pengesahan}
+    % \input{komponen-awal/pengesahan-dua-dosbing}
+    
     \input{komponen-awal/pernyataan-orisinalitas}
 
     \pagestyle{plain}
@@ -37,6 +44,10 @@
 	\clearpage
     \tableofcontents
     
+    
+    %----------------------------------------------------------------%
+    % Daftar Gambar
+    %----------------------------------------------------------------%
     \clearpage
     {%
 		\let\oldnumberline\numberline%
@@ -44,13 +55,40 @@
 		\listoffigures%
 	}
 	
+	
+    %----------------------------------------------------------------%
+    % Daftar Tabel
+    %----------------------------------------------------------------%
 	\clearpage
     {%
 		\let\oldnumberline\numberline%
 		\renewcommand{\numberline}{\tablename~\oldnumberline}%
 		\listoftables%
 	}
+
+    %----------------------------------------------------------------%
+    % Daftar Rumus
+    % (Un-comment bila dibutuhkan)
+    %----------------------------------------------------------------%
+    % 	\clearpage
+    %     {%
+    %     	\let\oldnumberline\numberline%
+    % 		\renewcommand{\numberline}{Rumus~\oldnumberline}%
+    % 		\listofmyequations%
+    % 	}
+    
+    %----------------------------------------------------------------%
+    % Daftar Algoritme
+    % (Un-comment bila dibutuhkan)
+    %----------------------------------------------------------------%
+    % 	\clearpage
+    %     {%
+    %     	\let\oldnumberline\numberline%
+    % 		\renewcommand{\numberline}{\lstlistingname~\oldnumberline}%
+    % 		\lstlistoflistings%
+    % 	}
 	
+    
     \newpage
     \setcounter{savepage}{\arabic{page}}
 
@@ -64,6 +102,7 @@
 
     %----------------------------------------------------------------%
     % Daftar Bab
+    % (Bila butuh bab tambahan, buat file .tex baru dan input saja
     %----------------------------------------------------------------%
     \input{komponen-utama/bab-1}
     \input{komponen-utama/bab-2}
@@ -92,6 +131,7 @@
     
     %----------------------------------------------------------------%
     % Daftar Lampiran
+    % (Bila butuh lampiran tambahan, buat file .tex baru dan input saja
     %----------------------------------------------------------------%
     \input{komponen-akhir/lampiran-1}
     

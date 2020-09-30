@@ -9,27 +9,27 @@ Struktur dasar perintah Latex adalah \verb|\commandname[]{}|. Suatu perintah dal
 
 Untuk menyusun struktur dokumen, gunakan \verb|\chapter{}| untuk bab, \verb|\section{}| untuk sub bab, \verb|\subsection{}| untuk anak sub bab, \verb|\subsubsection{}| untuk level selanjutnya, dan seterusnya. Argumen yang dimasukan cukup nama bab atau sub bab tersebut saja. Penomoran akan dilakukan otomatis oleh program (termasuk juga penomoran untuk gambar dan tabel, jadi tidak perlu mengurus daftar isi, tabel, dan gambar). Sebagai contoh, struktur penulisan bab ini adalah: 
 
-\begin{verbatim}
+\begin{lstlisting}[caption={Contoh struktur bab}]
     \chapter{Tinjauan Pustaka}
         \section{Dasar \LaTeX}
             Bla bla bla bla bla
         \section{List}
             Bla bla bla bla bla
-\end{verbatim}
+\end{lstlisting}
 
-Untuk menulis cetak tebal dan miring, gunakan \verb|\textbf{}| dan \verb|\textit{}|. Untuk penulisan kode, gunakan \verb/\verb||/. Untuk perintah \texttt{verb}, argumen wajib tidak harus menggunakan kurung kurawal, bisa menggunakan simbol lain selama simbol tersebut tidak termasuk didalam argumennya. Untuk mencantumkan URL, gunakan \verb|\url{}|.
-
-
-
+Untuk menulis cetak tebal dan miring, gunakan \verb|\textbf{}| dan \verb|\textit{}|. Untuk penulisan kode, gunakan \verb/\verb||/. Untuk perintah \texttt{verb}, argumen wajib tidak harus menggunakan kurung kurawal, bisa menggunakan simbol lain selama simbol tersebut tidak termasuk didalam argumennya. Untuk mencantumkan URL, gunakan \verb|\url{}|. Komentar menggunakan simbol \verb|%|.
 
 \begin{table}[H]
     \centering
     \begin{tabular}{l  l}
+        \toprule
         Hasil & Kode LaTeX \\
         \midrule
         \textbf{Lorem ipsum} dolor sit amet & \verb|\textbf{Lorem ipsum}| dolor sit amet \\
         \textit{Lorem ipsum} dolor sit amet & \verb|\textit{Lorem ipsum}| dolor sit amet \\
         \verb|Lorem ipsum| dolor sit amet & \verb[\verb|Lorem ipsum|[ dolor sit amet \\
+         & \verb[%[ Lorem ipsum dolor sit amet \\
+        \bottomrule
     \end{tabular}
 \end{table}
 
@@ -37,23 +37,21 @@ Untuk menulis cetak tebal dan miring, gunakan \verb|\textbf{}| dan \verb|\textit
 
 Ada dua macam \textit{list} yang bisa dibuat, \textit{ordered} dan \textit{unordered} (seperti di HTML atau \textit{bullets and numbering} di Microsoft Word dan Google Docs). Untuk \textit{unordered lists} kodenya adalah: 
 
-\begin{verbatim}
+\begin{lstlisting}[caption={Kode Latex untuk \textit{unordered list}}]
     \begin{itemize}
         \item Nulla tristique eros ut dolor lobortis viverra.
         \item Sed euismod erat ut leo molestie, 
               sed malesuada libero ultrices.
     \end{itemize}
-\end{verbatim}
+\end{lstlisting}
 
-Sementara untuk \textit{ordered lists}: 
-
-\begin{verbatim}
+\begin{lstlisting}[caption={Kode Latex untuk \textit{ordered list}}]
     \begin{enumerate}
         \item Nulla tristique eros ut dolor lobortis viverra.
         \item Sed euismod erat ut leo molestie, 
               sed malesuada libero ultrices.
     \end{enumerate}
-\end{verbatim}
+\end{lstlisting}
 
 
 \section{Bibliography atau Daftar Pustaka}
@@ -66,15 +64,15 @@ Rujukan ditulis dengan menggunakan perintah \verb|\textcite{}| atau  \verb|\auto
     "Tata karya tulis ilmiah merupakan cara menyusun tulisan tentang perencanaan, pelaksanaan, dan hasil suatu kajian ilmiah \autocite{penulisanilteks}."
 \end{displayquote}
 
-Argumen yang diberikan bergantung pada entri didalam file \texttt{.bib} yang digunakan. Terdapat beberapa macam entri, misalnya \verb|@book| atau \verb|@article|. Bila mencari sumber dari \textit{Google Scholar}, entri dapat langsung didapatkan dengan menekan tombol kutip, kemudian menekan tombol "BibTeX". Contoh entri dalam \texttt{.bib} adalah sebagai berikut:
+Argumen yang diberikan bergantung pada entri didalam file \texttt{.bib} yang digunakan. Terdapat beberapa macam entri, misalnya \verb|@book| atau \verb|@article|. Bila mencari sumber dari \textit{Google Scholar}, entri dapat langsung didapatkan dengan menekan tombol kutip, kemudian menekan tombol "BibTeX". 
 
-\begin{verbatim}
+\begin{lstlisting}[caption={Contoh entri dalam BibTeX}]
     @book{penulisanilteks,
       author    = {{Tim Dosen Tata Tulis Karya Ilmiah ITB}}, 
       title     = {Metode Penulisan Ilteks},
       year      = 2017,
     }
-\end{verbatim}
+\end{lstlisting}
 
 \section{Gambar}
 
@@ -87,21 +85,20 @@ Argumen yang diberikan bergantung pada entri didalam file \texttt{.bib} yang dig
   	\label{gambar:logo_itb}
 \end{figure}
 
-\textit{Boilerplate} kode untuk mencantumkan gambar adalah sebagai berikut:
-
-\begin{verbatim}
+\begin{lstlisting}[caption={Kode Latex untuk mencantumkan gambar}]
     \begin{figure}[h]
         \centering
       	\includegraphics[]{}
       	\caption{}
       	\label{}
     \end{figure}
-\end{verbatim}
+\end{lstlisting}
 
 Untuk mencantumkan gambar, beberapa hal yang perlu diperhatikan adalah sebagai berikut:
 
 \begin{enumerate}
     \item Gambar harus diberikan nama. Nama gambar ditambahkan dengan menggunakan perintah \verb|\caption{}|. Nama gambar dicantumkan dibawah gambar.
+    \item Gunakan \textit{title case} untuk nama gambar (serta tabel, rumus, dsb).
     \item Gambar harus dirujuk dalam paragraf pembahasan. Untuk merujuk kepada gambar, gunakan perintah \verb|ref{}|. 
     \item Ketika mencantumkan gambar yang dibuat oleh orang lain, termasuk misalnya mengambil gambar dari internet, harus dituliskan sumber kutipan. Hal ini untuk menghindari tindakan penjiplakan. 
 \end{enumerate}
@@ -134,9 +131,9 @@ Untuk mencantumkan gambar, beberapa hal yang perlu diperhatikan adalah sebagai b
 
 Dalam menyusun tabel, jumlah dan \textit{alignment} kolom harus ditentukan terlebih dulu dengan memberikan argumen kedalam perintah \verb|\tabular| dan \verb|\longtable|. Dalam contoh yang diberikan, argumen yang diberikan adalah \verb|{rrr}|. Argumen tersebut berarti 3 kolom yang setiap kolomnya menggunakan rata kanan. Untuk rata tengah, gunakan \texttt{c} dan untuk rata kiri, gunakan \texttt{l}. Jadi, misalkan mau menyusun tabel dengan 5 kolom dengan rata kiri kecuali kolom pertama menggunakan rata tengah, argumen yang digunakan adalah \verb|{cllll}|. Untuk contoh tabel diatas yang digunakan adalah \verb|{rrrrrrrrr}|. Lebar kolom akan diatur otomatis oleh program. 
 
-Setiap baris tabel diakhiri dengan \verb|\\| dan setiap sel dipisah menggunakan simbol \&. Jadi misalkan satu baris yang terdiri dari 3 kolom dengan nilai 1, 2, dan 3, penulisannya adalah \verb|1 & 2 & 3 \\|. \textit{Boilerplate} kode untuk mencantumkan tabel menggunakan \texttt{tabular} adalah sebagai berikut:
+Setiap baris tabel diakhiri dengan \verb|\\| dan setiap sel dipisah menggunakan simbol \&. Jadi misalkan satu baris yang terdiri dari 3 kolom dengan nilai 1, 2, dan 3, penulisannya adalah \verb|1 & 2 & 3 \\|.
 
-\begin{verbatim}
+\begin{lstlisting}[caption={Kode Latex untuk tabel biasa}]
     \begin{table}[H]
         \centering
         \caption{}
@@ -153,11 +150,11 @@ Setiap baris tabel diakhiri dengan \verb|\\| dan setiap sel dipisah menggunakan 
         \end{tabular}
 
     \end{table}
-\end{verbatim}
+\end{lstlisting}
 
-Berbeda dengan \texttt{tabular}, \texttt{longtable} memiliki perintah tambahan seperti \verb|\endhead| dan \verb|\endfirsthead|. Gunakan \verb|\endfirsthead| untuk mendeklarasikan batas kepala tabel yang pertama kali muncul, sehingga caption dan tabel hanya perlu dideklarasikan disini. \textit{Boilerplate} kode untuk mencantumkan tabel menggunakan \texttt{longtable} adalah sebagai berikut:
+Berbeda dengan \texttt{tabular}, \texttt{longtable} memiliki perintah tambahan seperti \verb|\endhead| dan \verb|\endfirsthead|. Gunakan \verb|\endfirsthead| untuk mendeklarasikan batas kepala tabel yang pertama kali muncul, sehingga caption dan tabel hanya perlu dideklarasikan disini.
 
-\begin{verbatim}
+\begin{lstlisting}[caption={Kode Latex untuk tabel yang melebihi 1 halaman}]
     \begin{longtable}{rrr}
         \caption{}
         \label{}\\
@@ -176,7 +173,7 @@ Berbeda dengan \texttt{tabular}, \texttt{longtable} memiliki perintah tambahan s
         g & h & i \\
         \bottomrule
     \end{longtable}
-\end{verbatim}
+\end{lstlisting}
 
 Untuk mencantumkan tabel, beberapa hal yang perlu diperhatikan adalah sebagai berikut:
 
@@ -186,21 +183,30 @@ Untuk mencantumkan tabel, beberapa hal yang perlu diperhatikan adalah sebagai be
     \item Untuk \texttt{longtable}, setelah menuliskan label, harus diakhiri dengan \verb|\\|.
 \end{enumerate}
 
-\section{Persamaan atau Rumus}
+\section{Rumus}
 
-\textit{Salah satu persamaan untuk menghitung jarak yang umum digunakan adalah euclidean distance (persamaan \ref{persamaan:euclidean_distance}).}
+\textit{Salah satu rumus untuk menghitung jarak yang umum digunakan adalah euclidean distance (rumus \ref{persamaan:euclidean_distance}).}
 
 \begin{equation}
     \label{persamaan:euclidean_distance}
     d_{(x,y)} = \sqrt{\sum_{i=1}^{k} (x_i - y_i)^2}
 \end{equation}
+\myequations{Euclidean Distance}
 
-Persamaan dapat ditulis \textit{inline} ataupun dalam paragraf sendiri seperti persamaan \textit{euclidean distance} diatas. Untuk menulis persamaan \textit{inline}, gunakan simbol \$ sebagai kurung, misalkan \verb|$x = 3$| untuk menulis $x = 3$. Untuk persamaan dalam paragraf tersendiri, kodenya adalah sebagai berikut:
+Dalam template ini, untuk menyusun daftar rumus, digunakan perintah \verb|\myequations{}|. Cara kerjanya mirip dengan \verb|\caption{}|. Bila tidak akan menyusun daftar rumus, perintah tersebut tidak usah digunakan.
 
-\begin{verbatim}
+\begin{lstlisting}[caption={Kode Latex untuk rumus}]
     \begin{equation}
         \label{}
         % Tulis persamaan disini 
     \end{equation}
-\end{verbatim}
+    \myequations{} % Tidak perlu bila tidak akan menyusun daftar rumus
+\end{lstlisting}
 
+\section{Algoritme}
+
+\begin{lstlisting}[caption={Kode Latex untuk algoritme}]
+    \begin{lstlisting}[caption={}, float]
+        % Tulis kode disini
+    \end{lstlistingg} % hapus typonya (lebih 1 huruf g)
+\end{lstlisting}
